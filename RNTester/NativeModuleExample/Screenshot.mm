@@ -6,18 +6,60 @@
  */
 
 #import "Screenshot.h"
-
 #import <React/RCTUIManager.h>
+#import <ReactCommon/RCTTurboModuleManager.h>
+
+#include <ReactCommon/TurboModule.h>
+
+class ScreenshotManagerTurboModule : public facebook::react::TurboModule
+{
+public:
+  ScreenshotManagerTurboModule(std::shared_ptr<facebook::react::JSCallInvoker> jsInvoker)
+    :facebook::react::TurboModule("ScreenshotManager", jsInvoker)
+  {
+  }
+  
+  facebook::jsi::Value get(
+    facebook::jsi::Runtime& runtime,
+    const facebook::jsi::PropNameID& propName
+  ) override
+  {
+    auto key = propName.utf8(runtime);
+    if (key == "takeScreenshot")
+    {
+      throw "Not Implemented!";
+    }
+    else
+    {
+      return facebook::jsi::Value::undefined();
+    }
+  }
+};
+
+std::shared_ptr<facebook::react::TurboModule> CreateScreenshotManagerTurboModule
+(
+  std::shared_ptr<facebook::react::JSCallInvoker> jsInvoker
+)
+{
+  return make_shared<ScreenshotManagerTurboModule>(jsInvoker);
+}
 
 @implementation ScreenshotManager
 
-RCT_EXPORT_MODULE();
+// RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(takeScreenshot:(id /* NSString or NSNumber */)target
                   withOptions:(NSDictionary *)options
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 {
+  NSError* error = [NSError
+    errorWithDomain:@"What is a domain?"
+    code:200
+    userInfo:@{@"reason": @"Not Implemented"}
+    ];
+  reject(RCTErrorUnspecified, error.userInfo[@"reason"], error);
+  /*
   [self.bridge.uiManager addUIBlock:^(__unused RCTUIManager *uiManager, NSDictionary<NSNumber *, UIView *> *viewRegistry) {
 
     // Get view
@@ -78,6 +120,7 @@ RCT_EXPORT_METHOD(takeScreenshot:(id /* NSString or NSNumber */)target
       reject(RCTErrorUnspecified, error.localizedDescription, error);
     });
   }];
+  */
 }
 
 @end
