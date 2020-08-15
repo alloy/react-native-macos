@@ -12,12 +12,7 @@
 #import <ReactCommon/SampleTurboCxxModule.h>
 #import <ReactCommon/RCTSampleTurboModule.h>
 
-// NOTE: This entire file should be codegen'ed.
-
-extern std::shared_ptr<facebook::react::TurboModule> CreateScreenshotManagerTurboModule
-(
-  std::shared_ptr<facebook::react::JSCallInvoker> jsInvoker
-);
+// NOTE: This entire file should be codegen'ed
 
 namespace facebook {
 namespace react {
@@ -31,9 +26,6 @@ std::shared_ptr<TurboModule> RNTesterTurboModuleProvider(const std::string &name
     return std::make_shared<SampleTurboCxxModule>(jsInvoker);
   }
 
-  if (name == "ScreenshotManager") {
-    return CreateScreenshotManagerTurboModule(jsInvoker);
-  }
   return nullptr;
 }
 

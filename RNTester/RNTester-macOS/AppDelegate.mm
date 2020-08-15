@@ -10,13 +10,18 @@
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
+#import <React/RCTCxxBridgeDelegate.h>
 #import <React/RCTLinkingManager.h>
 #import <React/RCTPushNotificationManager.h>
 #import <React/RCTTextAttributes.h>
+#import "../NativeModuleExample/Screenshot.h"
 
-const NSString *kBundleNameJS = @"RNTesterApp";
+#include <ReactCommon/TurboModule.h>
+#include <React/JSCExecutorFactory.h>
 
-@interface AppDelegate () <RCTBridgeDelegate, NSUserNotificationCenterDelegate>
+NSString *kBundleNameJS = @"RNTesterApp";
+
+@interface AppDelegate () <RCTCxxBridgeDelegate, NSUserNotificationCenterDelegate>
 
 @end
 
@@ -69,6 +74,23 @@ const NSString *kBundleNameJS = @"RNTesterApp";
 	NSString *jsBundlePath = [NSString stringWithFormat:@"RNTester/js/%@.macos",kBundleNameJS];
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:jsBundlePath
                                                         fallbackResource:nil];
+}
+
+#pragma mark - RCTCxxBridgeDelegate Methods
+
+- (std::unique_ptr<facebook::react::JSExecutorFactory>)jsExecutorFactoryForBridge:(RCTBridge *)bridge
+{
+  __weak __typeof(self) weakSelf = self;
+  return std::make_unique<facebook::react::JSCExecutorFactory>([weakSelf, bridge](facebook::jsi::Runtime &runtime) {
+    if (!bridge) {
+      return;
+    }
+    __typeof(self) strongSelf = weakSelf;
+    if (strongSelf) {
+      strongSelf->_turboModuleManager = [[RCTTurboModuleManager alloc] initWithBridge:bridge delegate:strongSelf];
+      [strongSelf->_turboModuleManager installJSBindingWithRuntime:&runtime];
+    }
+  });
 }
 
 # pragma mark - Push Notifications

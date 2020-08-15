@@ -36,13 +36,33 @@ public:
   }
 };
 
-std::shared_ptr<facebook::react::TurboModule> CreateScreenshotManagerTurboModule
-(
-  std::shared_ptr<facebook::react::JSCallInvoker> jsInvoker
-)
+@implementation ScreenshotManagerTurboModuleManagerDelegate
+
+- (std::shared_ptr<facebook::react::TurboModule>)
+  getTurboModule:(const std::string &)name
+  jsInvoker:(std::shared_ptr<facebook::react::JSCallInvoker>)jsInvoker
 {
-  return make_shared<ScreenshotManagerTurboModule>(jsInvoker);
+  if (name == "ScreenshotManager")
+  {
+    return std::make_shared<ScreenshotManagerTurboModule>(jsInvoker);
+  }
+  return nullptr;
 }
+
+
+- (std::shared_ptr<facebook::react::TurboModule>)
+  getTurboModule:(const std::string &)name
+  instance:(id<RCTTurboModule>)instance
+  jsInvoker:(std::shared_ptr<facebook::react::JSCallInvoker>)jsInvoker
+{
+  if (name == "ScreenshotManager")
+  {
+    return std::make_shared<ScreenshotManagerTurboModule>(jsInvoker);
+  }
+  return nullptr;
+}
+
+@end
 
 @implementation ScreenshotManager
 

@@ -6,6 +6,10 @@
  */
 
 #import <React/RCTViewManager.h>
+#import <ReactCommon/RCTTurboModuleManager.h>
+
+@interface ScreenshotManagerTurboModuleManagerDelegate : NSObject<RCTTurboModuleManagerDelegate>
+@end
 
 @interface ScreenshotManager : RCTViewManager
 @end
