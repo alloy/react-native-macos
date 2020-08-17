@@ -17,7 +17,7 @@
 #import "../NativeModuleExample/Screenshot.h"
 
 #include <ReactCommon/TurboModule.h>
-#import <cxxreact/JSExecutor.h>
+#include <cxxreact/JSExecutor.h>
 
 NSString *kBundleNameJS = @"RNTesterApp";
 
