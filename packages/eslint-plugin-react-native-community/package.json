@@ -7,8 +7,5 @@
     "type": "git",
     "url": "git@github.com:facebook/react-native.git"
   },
-  "license": "MIT",
-  "beachball": {
-    "shouldPublish": false
-  }  
+  "license": "MIT"
 }
