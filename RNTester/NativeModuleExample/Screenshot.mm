@@ -14,7 +14,7 @@
 class ScreenshotManagerTurboModule : public facebook::react::TurboModule
 {
 public:
-  ScreenshotManagerTurboModule(std::shared_ptr<facebook::react::JSCallInvoker> jsInvoker)
+  ScreenshotManagerTurboModule(std::shared_ptr<facebook::react::CallInvoker> jsInvoker)
     :facebook::react::TurboModule("ScreenshotManager", jsInvoker)
   {
   }
@@ -40,7 +40,7 @@ public:
 
 - (std::shared_ptr<facebook::react::TurboModule>)
   getTurboModule:(const std::string &)name
-  jsInvoker:(std::shared_ptr<facebook::react::JSCallInvoker>)jsInvoker
+  jsInvoker:(std::shared_ptr<facebook::react::CallInvoker>)jsInvoker
 {
   if (name == "ScreenshotManager")
   {
@@ -53,7 +53,7 @@ public:
 - (std::shared_ptr<facebook::react::TurboModule>)
   getTurboModule:(const std::string &)name
   instance:(id<RCTTurboModule>)instance
-  jsInvoker:(std::shared_ptr<facebook::react::JSCallInvoker>)jsInvoker
+  jsInvoker:(std::shared_ptr<facebook::react::CallInvoker>)jsInvoker
 {
   if (name == "ScreenshotManager")
   {
