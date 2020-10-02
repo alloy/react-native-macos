@@ -23,6 +23,6 @@ Pod::Spec.new do |s|
   s.source_files           = "ReactTurboModuleCxx/MacOS/winrt/*.{h,cpp,mm}"
   s.library                = "stdc++"
   s.pod_target_xcconfig = { "USE_HEADERMAP" => "YES",
-                            "CLANG_CXX_LANGUAGE_STANDARD" => "c++17",
-                            "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/React-TurboModuleCxx-MacOS/ReactTurboModuleCxx/MacOS\"" }
+                            "CLANG_CXX_LANGUAGE_STANDARD" => "c++17" }
+  s.header_dir             = "winrt"
 end
