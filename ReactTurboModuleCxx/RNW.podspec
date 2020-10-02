@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.author                 = "Microsoft Corporation"
   s.platforms              = { :ios => "10.0", :tvos => "10.0", :osx => "10.13" }
   s.source                 = { :git => 'https://github.com/microsoft/react-native-windows.git',
-                               :commit => "1f0f537" }
+                               :commit => "1f0f5371fc96ad42971a6dc1cee8f530d178d5d2" }
   s.source_files           = "vnext/Shared/TurboModuleRegistry.h"
   s.library                = "stdc++"
   s.pod_target_xcconfig = { "USE_HEADERMAP" => "YES",
