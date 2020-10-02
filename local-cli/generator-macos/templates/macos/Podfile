@@ -92,6 +92,7 @@ abstract_target 'Shared' do
     # pod 'libevent', :podspec => '../node_modules/react-native-macos/third-party-podspecs/libevent.podspec'
 
     # Pods specifically for macOS target
+    pod 'React-TurboModuleCxx-MacOS', :podspec => '../node_modules/react-native-macos/ReactTurboModuleCxx/MacOS/MacOS.podspec'
   end
 
   target 'HelloWorld-iOS' do
