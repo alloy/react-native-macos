@@ -55,8 +55,6 @@ def use_react_native! (options={})
   # TODO(macOS GH#214)
   pod 'boost-for-react-native', :podspec => "#{prefix}/third-party-podspecs/boost-for-react-native.podspec"
 
-  pod 'React-TurboModuleCxx-MacOS', :podspec => "#{prefix}/ReactTurboModuleCxx/MacOS.podspec"
-
   if fabric_enabled
     pod 'React-Fabric', :path => "#{prefix}/ReactCommon"
     pod 'React-graphics', :path => "#{prefix}/ReactCommon/fabric/graphics"
