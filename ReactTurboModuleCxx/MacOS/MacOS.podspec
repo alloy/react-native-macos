@@ -3,7 +3,7 @@ require "json"
 package = JSON.parse(File.read(File.join(__dir__, "../..", "package.json")))
 version = package['version']
 
-source = { :git => 'https://github.com/microsoft/react-native-macos.git' }
+source = { :git => 'https://github.com/ZihanChen-MSFT/react-native-macos.git' }
 if version == '1000.0.0'
   # This is an unpublished version, use the latest commit hash of the react-native repo, which we’re presumably in.
   source[:commit] = `git rev-parse HEAD`.strip
@@ -23,5 +23,6 @@ Pod::Spec.new do |s|
   s.source_files           = "ReactTurboModuleCxx/MacOS/winrt/*.{h,cpp,mm}"
   s.library                = "stdc++"
   s.pod_target_xcconfig = { "USE_HEADERMAP" => "YES",
-                            "CLANG_CXX_LANGUAGE_STANDARD" => "c++17" }
+                            "CLANG_CXX_LANGUAGE_STANDARD" => "c++17",
+                            "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/React-TurboModuleCxx-MacOS/ReactTurboModuleCxx/MacOS\"" }
 end
