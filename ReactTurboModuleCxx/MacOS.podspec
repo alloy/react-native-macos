@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.author                 = "Microsoft Corporation"
   s.platforms              = { :ios => "10.0", :tvos => "10.0", :osx => "10.13" }
   s.source                 = source
-  s.source_files           = "ReactTurboModuleCxx/MacOS/winrt/*.{h,cpp,mm}"
+  s.source_files           = "ReactTurboModuleCxx/MacOS/*.{h,cpp,mm}"
   s.library                = "stdc++"
   s.pod_target_xcconfig = { "USE_HEADERMAP" => "YES",
                             "CLANG_CXX_LANGUAGE_STANDARD" => "c++17" }
