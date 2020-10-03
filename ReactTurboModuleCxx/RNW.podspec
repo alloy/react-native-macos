@@ -18,9 +18,9 @@ Pod::Spec.new do |s|
                              "vnext/Microsoft.React/JsiWriter.{h,cpp}",
                              "vnext/Microsoft.React/TurboModulesProvider.{h,cpp}"
   s.library                = "stdc++"
-  s.pod_target_xcconfig = { "USE_HEADERMAP" => "YES",
-                            "CLANG_CXX_LANGUAGE_STANDARD" => "c++17" ,
-                            "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/Headers/Private/React-callinvoker\"" "\"$(PODS_ROOT)/Headers/Private/ReactCommon\"" }
+  s.pod_target_xcconfig    = { "USE_HEADERMAP" => "YES",
+                               "CLANG_CXX_LANGUAGE_STANDARD" => "c++17" ,
+                               "HEADER_SEARCH_PATHS" => "\"$(PODS_ROOT)/Headers/Private/React-callinvoker\"" "\"$(PODS_ROOT)/Headers/Private/ReactCommon\"" }
 
   s.dependency "React-callinvoker", version
   s.dependency "ReactCommon/turbomodule/core", version
